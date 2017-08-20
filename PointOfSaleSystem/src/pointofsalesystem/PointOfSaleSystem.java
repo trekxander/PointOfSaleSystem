@@ -5,10 +5,6 @@
  */
 package pointofsalesystem;
 
-/**
- *
- * @author Dexter
- */
 public class PointOfSaleSystem {
 
     /**
