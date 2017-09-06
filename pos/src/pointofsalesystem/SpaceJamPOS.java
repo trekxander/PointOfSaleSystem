@@ -486,6 +486,11 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         });
 
         takeAway.setText("TAKE-AWAY");
+        takeAway.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                takeAwayActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -704,6 +709,14 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void dineInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dineInActionPerformed
+        this.serveOrder();
+    }//GEN-LAST:event_dineInActionPerformed
+
+    private void takeAwayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_takeAwayActionPerformed
+        this.serveOrder();
+    }//GEN-LAST:event_takeAwayActionPerformed
+
+    private void serveOrder() {
         String cashTenderedStr = JOptionPane.showInputDialog(this, "Enter Cash Amount", "Serve Order", JOptionPane.OK_CANCEL_OPTION);
         if (cashTenderedStr.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Invalid Amount", "Serve Order", JOptionPane.ERROR_MESSAGE);
@@ -718,7 +731,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Insufficient Cash", "Serve Order", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_dineInActionPerformed
+    }
 
     /**
      * @param args the command line arguments

@@ -799,6 +799,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="TAKE-AWAY"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="takeAwayActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
