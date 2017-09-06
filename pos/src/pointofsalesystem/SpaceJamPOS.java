@@ -8,12 +8,13 @@ package pointofsalesystem;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class SpaceJamPOS extends javax.swing.JFrame {
 
-    Order order;
+    private Order order;
 
     /**
      * Creates new form NewJFrame
@@ -117,20 +118,60 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         });
 
         jButton7.setText("LONGSILOG");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("TOCILOG");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton10.setText("PORKSILOG");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         jButton11.setText("TAPSILOG");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton12.setText("SISILOG");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
 
         jButton15.setText("CHICKSILOG");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
 
         jButton14.setText("LIEMPOSILOG");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
 
         jButton13.setText("BANGSILOG");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout bestSilogPanelLayout = new org.jdesktop.layout.GroupLayout(bestSilogPanel);
         bestSilogPanel.setLayout(bestSilogPanelLayout);
@@ -709,18 +750,6 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void dineInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dineInActionPerformed
-        this.serveOrder();
-    }//GEN-LAST:event_dineInActionPerformed
-
-    private void takeAwayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_takeAwayActionPerformed
-        this.serveOrder();
-    }//GEN-LAST:event_takeAwayActionPerformed
-
     private void serveOrder() {
         String cashTenderedStr = JOptionPane.showInputDialog(this, "Enter Cash Amount", "Serve Order", JOptionPane.OK_CANCEL_OPTION);
         if (cashTenderedStr.isEmpty()) {
@@ -737,6 +766,96 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             }
         }
     }
+
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        Product product = new Product();
+        product.setId(1);
+        product.setName("SCHUBSILOG");
+        product.setProductPrice(55.0);
+
+        addToOrder(product);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void dineInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dineInActionPerformed
+        this.serveOrder();
+    }//GEN-LAST:event_dineInActionPerformed
+
+    private void takeAwayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_takeAwayActionPerformed
+        this.serveOrder();
+    }//GEN-LAST:event_takeAwayActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        Product product = new Product();
+        product.setId(1);
+        product.setName("LONG SILOG");
+        product.setProductPrice(60.0);
+
+        addToOrder(product);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        Product product = new Product();
+        product.setId(1);
+        product.setName("TOCI LOG");
+        product.setProductPrice(70.0);
+
+        addToOrder(product);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        Product product = new Product();
+        product.setId(1);
+        product.setName("PORK SILOG");
+        product.setProductPrice(70.0);
+
+        addToOrder(product);
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        Product product = new Product();
+        product.setId(1);
+        product.setName("TAP SILOG");
+        product.setProductPrice(75.0);
+
+        addToOrder(product);
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        Product product = new Product();
+        product.setId(1);
+        product.setName("SISI SILOG");
+        product.setProductPrice(75.0);
+
+        addToOrder(product);
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        Product product = new Product();
+        product.setId(1);
+        product.setName("BANG SILOG");
+        product.setProductPrice(80.0);
+
+        addToOrder(product);
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        Product product = new Product();
+        product.setId(1);
+        product.setName("LIEMPO SILOG");
+        product.setProductPrice(85.0);
+
+        addToOrder(product);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        Product product = new Product();
+        product.setId(1);
+        product.setName("CHICK SILOG");
+        product.setProductPrice(85.0);
+
+        addToOrder(product);
+    }//GEN-LAST:event_jButton15ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -766,11 +885,32 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         });
     }
 
-    public void addToOrder(Order order) {
+    public void addToOrder(Product product) {
+        HashMap<Integer, OrderItem> orderItemList = order.getOrderDetail();
+        OrderItem item = orderItemList.get(product.getId());
+        if (item != null) {
+            double newPrice = item.getPrice() + product.getProductPrice();
+            int newQuantity = item.getQuantity() + 1;
+            item.setQuantity(newQuantity);
+            item.setPrice(newPrice);
 
+            order.setSubTotal(newPrice);
+            order.setTotal(order.getTotal() + newPrice);
+
+        } else {
+            OrderItem newItem = new OrderItem();
+            newItem.setPrice(product.getProductPrice());
+            newItem.setQuantity(1);
+            orderItemList.put(product.getId(), newItem);
+
+            order.setSubTotal(order.getTotal() + newItem.getPrice());
+            order.setTotal(order.getTotal() + newItem.getPrice());
+        }
+        refreshOrderDetails(order);
     }
 
     public void refreshOrderDetails(Order order) {
+
         subtotalTxt.setText(String.valueOf(order.getSubTotal()));
         discountTxt.setText(String.valueOf(order.getDiscount()));
         taxTxt.setText(String.valueOf(order.getTax()));
