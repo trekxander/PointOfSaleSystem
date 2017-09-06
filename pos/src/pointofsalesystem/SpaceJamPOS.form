@@ -634,10 +634,10 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="orderListTable">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="3" rowCount="4">
+                  <Table columnCount="3" rowCount="0">
                     <Column editable="true" title="Quantity" type="java.lang.Object"/>
                     <Column editable="true" title="Poduct" type="java.lang.Object"/>
                     <Column editable="true" title="Price" type="java.lang.Object"/>
@@ -646,17 +646,17 @@
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title value="Quantity"/>
+                      <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title value="Poduct"/>
+                      <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title value="Price"/>
+                      <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
@@ -737,6 +737,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="subtotalTxt">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="text" type="java.lang.String" value="0.00"/>
               </Properties>
             </Component>
@@ -762,11 +763,13 @@
             </Component>
             <Component class="javax.swing.JTextField" name="taxTxt">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="text" type="java.lang.String" value="0.00"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="totalTxt">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="text" type="java.lang.String" value="0.00"/>
               </Properties>
             </Component>

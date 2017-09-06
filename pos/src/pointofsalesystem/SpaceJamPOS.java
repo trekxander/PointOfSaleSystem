@@ -8,13 +8,16 @@ package pointofsalesystem;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.Collection;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 public class SpaceJamPOS extends javax.swing.JFrame {
 
     private Order order;
+    private double TAX = 0.15;
 
     /**
      * Creates new form NewJFrame
@@ -80,7 +83,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        orderListTable = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         subtotalTxt = new javax.swing.JTextField();
@@ -444,28 +447,21 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Orders", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        orderListTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Quantity", "Poduct", "Price"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setHeaderValue("Quantity");
-            jTable1.getColumnModel().getColumn(1).setHeaderValue("Poduct");
-            jTable1.getColumnModel().getColumn(2).setHeaderValue("Price");
-        }
+        jScrollPane1.setViewportView(orderListTable);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
         jLabel1.setText("Subtotal:");
 
+        subtotalTxt.setEditable(false);
         subtotalTxt.setText("0.00");
 
         jLabel2.setText("Discount:");
@@ -476,8 +472,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
         jLabel4.setText("Tax:");
 
+        taxTxt.setEditable(false);
         taxTxt.setText("0.00");
 
+        totalTxt.setEditable(false);
         totalTxt.setText("0.00");
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
@@ -750,6 +748,53 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    public void addToOrder(Product product) {
+        HashMap<Integer, OrderItem> orderItemList = order.getOrderDetail();
+        OrderItem item = orderItemList.get(product.getId());
+        if (item != null) {
+            double newPrice = item.getPrice() + product.getProductPrice();
+            int newQuantity = item.getQuantity() + 1;
+            item.setQuantity(newQuantity);
+            item.setPrice(newPrice);
+
+            order.getOrderDetail().put(product.getId(), item);
+            order.setTotal(calculateTax(order.getSubTotal()));
+            order.setTax(order.getSubTotal() - order.getTotal());
+            order.setSubTotal(order.getTotal() + newPrice);
+
+        } else {
+            OrderItem newItem = new OrderItem();
+            newItem.setProduct(product);
+            newItem.setPrice(product.getProductPrice());
+            newItem.setQuantity(1);
+            orderItemList.put(product.getId(), newItem);
+            order.setSubTotal(order.getTotal() + newItem.getPrice());
+            order.setTotal(calculateTax(order.getSubTotal()));
+            order.setTax(order.getSubTotal() - order.getTotal());
+
+            DefaultTableModel model = (DefaultTableModel) orderListTable.getModel();
+            model.addRow(new Object[]{"", "", ""});
+        }
+        refreshOrderDetails(order);
+    }
+
+    public void refreshOrderDetails(Order order) {
+        subtotalTxt.setText(String.valueOf(order.getSubTotal()));
+        discountTxt.setText(String.valueOf(order.getDiscount()));
+        taxTxt.setText(String.valueOf(order.getTax()));
+        totalTxt.setText(String.valueOf(order.getTotal()));
+
+        Collection<OrderItem> orderItemList = order.getOrderDetail().values();
+        int i = 0;
+        for (OrderItem item : orderItemList) {
+            orderListTable.setValueAt(item.getQuantity(), i, 0);
+            orderListTable.setValueAt(item.getProduct().getName(), i, 1);
+            orderListTable.setValueAt(item.getPrice(), i, 2);
+            i++;
+        }
+
+    }
+
     private void serveOrder() {
         String cashTenderedStr = JOptionPane.showInputDialog(this, "Enter Cash Amount", "Serve Order", JOptionPane.OK_CANCEL_OPTION);
         if (cashTenderedStr.isEmpty()) {
@@ -767,7 +812,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         }
     }
 
-
+    private double calculateTax(double total) {
+        return total - (total * TAX);
+    }
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         Product product = new Product();
         product.setId(1);
@@ -787,7 +834,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         Product product = new Product();
-        product.setId(1);
+        product.setId(2);
         product.setName("LONG SILOG");
         product.setProductPrice(60.0);
 
@@ -796,7 +843,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         Product product = new Product();
-        product.setId(1);
+        product.setId(3);
         product.setName("TOCI LOG");
         product.setProductPrice(70.0);
 
@@ -805,7 +852,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         Product product = new Product();
-        product.setId(1);
+        product.setId(4);
         product.setName("PORK SILOG");
         product.setProductPrice(70.0);
 
@@ -814,7 +861,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         Product product = new Product();
-        product.setId(1);
+        product.setId(5);
         product.setName("TAP SILOG");
         product.setProductPrice(75.0);
 
@@ -823,7 +870,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         Product product = new Product();
-        product.setId(1);
+        product.setId(6);
         product.setName("SISI SILOG");
         product.setProductPrice(75.0);
 
@@ -832,7 +879,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         Product product = new Product();
-        product.setId(1);
+        product.setId(7);
         product.setName("BANG SILOG");
         product.setProductPrice(80.0);
 
@@ -841,7 +888,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         Product product = new Product();
-        product.setId(1);
+        product.setId(8);
         product.setName("LIEMPO SILOG");
         product.setProductPrice(85.0);
 
@@ -850,7 +897,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         Product product = new Product();
-        product.setId(1);
+        product.setId(9);
         product.setName("CHICK SILOG");
         product.setProductPrice(85.0);
 
@@ -884,40 +931,6 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             }
         });
     }
-
-    public void addToOrder(Product product) {
-        HashMap<Integer, OrderItem> orderItemList = order.getOrderDetail();
-        OrderItem item = orderItemList.get(product.getId());
-        if (item != null) {
-            double newPrice = item.getPrice() + product.getProductPrice();
-            int newQuantity = item.getQuantity() + 1;
-            item.setQuantity(newQuantity);
-            item.setPrice(newPrice);
-
-            order.setSubTotal(newPrice);
-            order.setTotal(order.getTotal() + newPrice);
-
-        } else {
-            OrderItem newItem = new OrderItem();
-            newItem.setPrice(product.getProductPrice());
-            newItem.setQuantity(1);
-            orderItemList.put(product.getId(), newItem);
-
-            order.setSubTotal(order.getTotal() + newItem.getPrice());
-            order.setTotal(order.getTotal() + newItem.getPrice());
-        }
-        refreshOrderDetails(order);
-    }
-
-    public void refreshOrderDetails(Order order) {
-
-        subtotalTxt.setText(String.valueOf(order.getSubTotal()));
-        discountTxt.setText(String.valueOf(order.getDiscount()));
-        taxTxt.setText(String.valueOf(order.getTax()));
-        totalTxt.setText(String.valueOf(order.getTotal()));
-
-    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton bestSilog;
@@ -975,9 +988,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JPanel managerPanel;
+    private javax.swing.JTable orderListTable;
     private javax.swing.JPanel productsPanel;
     private javax.swing.JToggleButton sharing;
     private javax.swing.JPanel sharingPanel;
