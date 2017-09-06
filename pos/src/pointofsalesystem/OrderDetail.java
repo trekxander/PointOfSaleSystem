@@ -8,9 +8,9 @@ package pointofsalesystem;
 public class OrderDetail {
 
     private Integer id;
-    private Integer quantity;
+    private Integer quantity = 0;
     private Product product;
-    private Double price;
+    private Double price = 0.0;
 
     public Integer getId() {
         return id;
