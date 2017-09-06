@@ -691,11 +691,11 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         String managerPIN = JOptionPane.showInputDialog(this, "Enter Manager's PIN", "Manager Menu", JOptionPane.OK_CANCEL_OPTION);
-        if(managerPIN.equals("1234")){
-        CardLayout card = (CardLayout) (productsPanel.getLayout());
-        card.show(productsPanel, "manager");
-        }else{
-            JOptionPane.showMessageDialog(this, "Incorrect PIN","Manager's Access",JOptionPane.ERROR_MESSAGE);
+        if (managerPIN.equals("1234")) {
+            CardLayout card = (CardLayout) (productsPanel.getLayout());
+            card.show(productsPanel, "manager");
+        } else {
+            JOptionPane.showMessageDialog(this, "Incorrect PIN", "Manager's Access", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
@@ -705,12 +705,16 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void dineInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dineInActionPerformed
         String cashTenderedStr = JOptionPane.showInputDialog(this, "Enter Cash Amount", "Serve Order", JOptionPane.OK_CANCEL_OPTION);
-        double cashTendered = Double.valueOf(cashTenderedStr);
-        if (cashTendered > 0) {
-            double changeAmount = (cashTendered - order.getTotal());
-            JOptionPane.showMessageDialog(this, "Change Amount is: " + changeAmount);
-            order = new Order();//Server the order and reset the POS order details
-            this.refreshOrderDetails(order);
+        if (cashTenderedStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Invalid Amount", "Serve Order", JOptionPane.ERROR_MESSAGE);
+        } else {
+            double cashTendered = Double.valueOf(cashTenderedStr);
+            if (cashTendered > 0) {
+                double changeAmount = (cashTendered - order.getTotal());
+                JOptionPane.showMessageDialog(this, "Change Amount is: " + changeAmount);
+                order = new Order();//Server the order and reset the POS order details
+                this.refreshOrderDetails(order);
+            }
         }
     }//GEN-LAST:event_dineInActionPerformed
 
