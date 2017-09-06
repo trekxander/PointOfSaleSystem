@@ -10,7 +10,7 @@ public class Product {
     private Integer id;
     private String name;
     private ProductCategory category;
-    private Double productPrice;
+    private Double productPrice = 0.0;
 
     public Integer getId() {
         return id;

@@ -6,6 +6,7 @@
 package pointofsalesystem;
 
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class SpaceJamPOS extends javax.swing.JFrame {
@@ -478,6 +479,11 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Serve"));
 
         dineIn.setText("DINE-IN");
+        dineIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dineInActionPerformed(evt);
+            }
+        });
 
         takeAway.setText("TAKE-AWAY");
 
@@ -691,6 +697,15 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void dineInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dineInActionPerformed
+        String cashTendered = JOptionPane.showInputDialog(this, "Enter Cash Amount", "Serve Order", JOptionPane.OK_CANCEL_OPTION);
+        if(Double.valueOf(cashTendered)>0){
+            JOptionPane.showMessageDialog(this, "Change Amount is: 0.00");
+            order = new Order();//Server the order and reset the POS order details
+            this.refreshOrderDetails(order);
+        }
+    }//GEN-LAST:event_dineInActionPerformed
 
     /**
      * @param args the command line arguments

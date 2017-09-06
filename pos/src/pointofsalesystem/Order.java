@@ -11,10 +11,10 @@ public class Order {
 
     private Integer id;
     private HashMap<Integer, OrderDetail> orderDetail = new HashMap<Integer, OrderDetail>();
-    private Double subTotal;
-    private Double discount;
-    private Double tax;
-    private Double total;
+    private Double subTotal = 0.0;
+    private Double discount = 0.0;
+    private Double tax = 0.0;
+    private Double total = 0.0;
 
     public Integer getId() {
         return id;

@@ -791,6 +791,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="DINE-IN"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dineInActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="takeAway">
               <Properties>
