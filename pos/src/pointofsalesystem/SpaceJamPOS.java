@@ -6,6 +6,8 @@
 package pointofsalesystem;
 
 import java.awt.CardLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -19,6 +21,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     public SpaceJamPOS() {
         order = new Order();
         initComponents();
+        //This is to center the frame in the screen
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
     }
 
     /**
@@ -77,13 +82,13 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        subtotalTxt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        discountTxt = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        taxTxt = new javax.swing.JTextField();
+        totalTxt = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         dineIn = new javax.swing.JButton();
         takeAway = new javax.swing.JButton();
@@ -420,19 +425,19 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
         jLabel1.setText("Subtotal:");
 
-        jTextField1.setText("0.00");
+        subtotalTxt.setText("0.00");
 
         jLabel2.setText("Discount:");
 
         jLabel3.setText("Total:");
 
-        jTextField2.setText("0.00");
+        discountTxt.setText("0.00");
 
         jLabel4.setText("Tax:");
 
-        jTextField3.setText("0.00");
+        taxTxt.setText("0.00");
 
-        jTextField4.setText("0.00");
+        totalTxt.setText("0.00");
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -446,14 +451,14 @@ public class SpaceJamPOS extends javax.swing.JFrame {
                     .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextField1)
+                    .add(subtotalTxt)
                     .add(jPanel4Layout.createSequentialGroup()
-                        .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 68, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(discountTxt, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 68, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 31, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
-                    .add(jTextField4))
+                        .add(taxTxt, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
+                    .add(totalTxt))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -462,17 +467,17 @@ public class SpaceJamPOS extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(subtotalTxt, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(discountTxt, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel4)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(taxTxt, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
-                    .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(totalTxt, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -766,10 +771,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     }
 
     public void refreshOrderDetails(Order order) {
-        jTextField1.setText(String.valueOf(order.getSubTotal()));
-        jTextField2.setText(String.valueOf(order.getDiscount()));
-        jTextField3.setText(String.valueOf(order.getTax()));
-        jTextField4.setText(String.valueOf(order.getTotal()));
+        subtotalTxt.setText(String.valueOf(order.getSubTotal()));
+        discountTxt.setText(String.valueOf(order.getDiscount()));
+        taxTxt.setText(String.valueOf(order.getTax()));
+        totalTxt.setText(String.valueOf(order.getTotal()));
 
     }
 
@@ -779,6 +784,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     private javax.swing.JPanel bestSilogPanel;
     private javax.swing.ButtonGroup categoryButtonGroup;
     private javax.swing.JButton dineIn;
+    private javax.swing.JTextField discountTxt;
     private javax.swing.JToggleButton drinks;
     private javax.swing.JPanel drinksPanel;
     private javax.swing.JToggleButton extra;
@@ -830,10 +836,6 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JPanel managerPanel;
     private javax.swing.JPanel productsPanel;
@@ -841,6 +843,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     private javax.swing.JPanel sharingPanel;
     private javax.swing.JToggleButton special;
     private javax.swing.JPanel specialPanel;
+    private javax.swing.JTextField subtotalTxt;
     private javax.swing.JButton takeAway;
+    private javax.swing.JTextField taxTxt;
+    private javax.swing.JTextField totalTxt;
     // End of variables declaration//GEN-END:variables
 }

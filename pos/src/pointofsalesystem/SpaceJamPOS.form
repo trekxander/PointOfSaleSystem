@@ -666,15 +666,15 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextField1" max="32767" attributes="0"/>
+                          <Component id="subtotalTxt" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="jTextField2" min="-2" pref="68" max="-2" attributes="0"/>
+                              <Component id="discountTxt" min="-2" pref="68" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" pref="31" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField3" pref="79" max="32767" attributes="0"/>
+                              <Component id="taxTxt" pref="79" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jTextField4" alignment="0" max="32767" attributes="0"/>
+                          <Component id="totalTxt" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -686,19 +686,19 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="subtotalTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="discountTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="taxTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="totalTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="21" max="32767" attributes="0"/>
                   </Group>
@@ -711,7 +711,7 @@
                 <Property name="text" type="java.lang.String" value="Subtotal:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="subtotalTxt">
               <Properties>
                 <Property name="text" type="java.lang.String" value="0.00"/>
               </Properties>
@@ -726,7 +726,7 @@
                 <Property name="text" type="java.lang.String" value="Total:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField2">
+            <Component class="javax.swing.JTextField" name="discountTxt">
               <Properties>
                 <Property name="text" type="java.lang.String" value="0.00"/>
               </Properties>
@@ -736,12 +736,12 @@
                 <Property name="text" type="java.lang.String" value="Tax:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
+            <Component class="javax.swing.JTextField" name="taxTxt">
               <Properties>
                 <Property name="text" type="java.lang.String" value="0.00"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField4">
+            <Component class="javax.swing.JTextField" name="totalTxt">
               <Properties>
                 <Property name="text" type="java.lang.String" value="0.00"/>
               </Properties>
