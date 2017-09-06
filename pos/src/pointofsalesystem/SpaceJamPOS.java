@@ -8,14 +8,16 @@ package pointofsalesystem;
 import java.awt.CardLayout;
 import java.util.HashMap;
 import javax.swing.UIManager;
-import javax.swing.border.TitledBorder;
 
 public class SpaceJamPOS extends javax.swing.JFrame {
+
+    Order order;
 
     /**
      * Creates new form NewJFrame
      */
     public SpaceJamPOS() {
+        order = new Order();
         initComponents();
     }
 
@@ -403,6 +405,11 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setHeaderValue("Quantity");
+            jTable1.getColumnModel().getColumn(1).setHeaderValue("Poduct");
+            jTable1.getColumnModel().getColumn(2).setHeaderValue("Price");
+        }
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
@@ -688,15 +695,12 @@ public class SpaceJamPOS extends javax.swing.JFrame {
          */
         try {
             javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SpaceJamPOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SpaceJamPOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SpaceJamPOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SpaceJamPOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+
         //</editor-fold>
         //</editor-fold>
 
@@ -708,104 +712,14 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         });
     }
 
-    class OrderProduct {
-
-        Integer id;
-        Integer quantity;
-        String name;
-        Double price;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public Integer getQuantity() {
-            return quantity;
-        }
-
-        public void setQuantity(Integer quantity) {
-            this.quantity = quantity;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Double getPrice() {
-            return price;
-        }
-
-        public void setPrice(Double price) {
-            this.price = price;
-        }
+    public void refreshOrderDetails(Order order) {
+        jTextField1.setText(String.valueOf(order.getSubTotal()));
+        jTextField2.setText(String.valueOf(order.getDiscount()));
+        jTextField3.setText(String.valueOf(order.getTax()));
+        jTextField4.setText(String.valueOf(order.getTotal()));
 
     }
 
-    class Order {
-
-        Integer id;
-        HashMap<Integer, OrderProduct> orderList = new HashMap<Integer, OrderProduct>();
-        Double subTotal;
-        Double discount;
-        Double tax;
-        Double Total;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public HashMap<Integer, OrderProduct> getOrderList() {
-            return orderList;
-        }
-
-        public void setOrderList(HashMap<Integer, OrderProduct> orderList) {
-            this.orderList = orderList;
-        }
-
-        public Double getSubTotal() {
-            return subTotal;
-        }
-
-        public void setSubTotal(Double subTotal) {
-            this.subTotal = subTotal;
-        }
-
-        public Double getDiscount() {
-            return discount;
-        }
-
-        public void setDiscount(Double discount) {
-            this.discount = discount;
-        }
-
-        public Double getTax() {
-            return tax;
-        }
-
-        public void setTax(Double tax) {
-            this.tax = tax;
-        }
-
-        public Double getTotal() {
-            return Total;
-        }
-
-        public void setTotal(Double Total) {
-            this.Total = Total;
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton bestSilog;
