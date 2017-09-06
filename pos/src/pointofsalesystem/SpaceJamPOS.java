@@ -709,7 +709,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Invalid Amount", "Serve Order", JOptionPane.ERROR_MESSAGE);
         } else {
             double cashTendered = Double.valueOf(cashTenderedStr);
-            if (cashTendered > 0) {
+            if (cashTendered > 0 && cashTendered >= order.getTotal()) {
                 double changeAmount = (cashTendered - order.getTotal());
                 JOptionPane.showMessageDialog(this, "Change Amount is: " + changeAmount);
                 order = new Order();//Server the order and reset the POS order details
