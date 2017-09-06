@@ -7,10 +7,10 @@ package pointofsalesystem;
 
 public class Product {
 
-    Integer id;
-    String name;
-    ProductCategory category;
-    Double productPrice;
+    private Integer id;
+    private String name;
+    private ProductCategory category;
+    private Double productPrice;
 
     public Integer getId() {
         return id;

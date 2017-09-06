@@ -9,12 +9,12 @@ import java.util.HashMap;
 
 public class Order {
 
-    Integer id;
-    HashMap<Integer, OrderDetail> orderDetail = new HashMap<Integer, OrderDetail>();
-    Double subTotal;
-    Double discount;
-    Double tax;
-    Double Total;
+    private Integer id;
+    private HashMap<Integer, OrderDetail> orderDetail = new HashMap<Integer, OrderDetail>();
+    private Double subTotal;
+    private Double discount;
+    private Double tax;
+    private Double total;
 
     public Integer getId() {
         return id;
@@ -57,10 +57,10 @@ public class Order {
     }
 
     public Double getTotal() {
-        return Total;
+        return total;
     }
 
     public void setTotal(Double Total) {
-        this.Total = Total;
+        this.total = Total;
     }
 }
