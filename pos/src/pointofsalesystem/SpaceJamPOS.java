@@ -255,10 +255,11 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         sharingPanelLayout.setVerticalGroup(
             sharingPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(sharingPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .add(sharingPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jButton9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 58, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jButton16, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(0, 470, Short.MAX_VALUE))
+                .addContainerGap(459, Short.MAX_VALUE))
         );
 
         productsPanel.add(sharingPanel, "sharing");
@@ -921,7 +922,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         Product product = new Product();
-        product.setId(9);
+        product.setId(10);
         product.setName("SISIG JAMMERS");
         product.setProductPrice(100.0);
 
@@ -930,7 +931,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         Product product = new Product();
-        product.setId(9);
+        product.setId(11);
         product.setName("CHICKEN MOMOLS");
         product.setProductPrice(220.0);
 
