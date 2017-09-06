@@ -699,9 +699,11 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void dineInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dineInActionPerformed
-        String cashTendered = JOptionPane.showInputDialog(this, "Enter Cash Amount", "Serve Order", JOptionPane.OK_CANCEL_OPTION);
-        if(Double.valueOf(cashTendered)>0){
-            JOptionPane.showMessageDialog(this, "Change Amount is: 0.00");
+        String cashTenderedStr = JOptionPane.showInputDialog(this, "Enter Cash Amount", "Serve Order", JOptionPane.OK_CANCEL_OPTION);
+        double cashTendered = Double.valueOf(cashTenderedStr);
+        if( cashTendered > 0 ){
+            double changeAmount = (cashTendered - order.getTotal());
+            JOptionPane.showMessageDialog(this, "Change Amount is: "+changeAmount);
             order = new Order();//Server the order and reset the POS order details
             this.refreshOrderDetails(order);
         }
