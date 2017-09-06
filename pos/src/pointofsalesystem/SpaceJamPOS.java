@@ -690,20 +690,25 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     }//GEN-LAST:event_extraActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        String managerPIN = JOptionPane.showInputDialog(this, "Enter Manager's PIN", "Manager Menu", JOptionPane.OK_CANCEL_OPTION);
+        if(managerPIN.equals("1234")){
         CardLayout card = (CardLayout) (productsPanel.getLayout());
         card.show(productsPanel, "manager");
+        }else{
+            JOptionPane.showMessageDialog(this, "Incorrect PIN","Manager's Access",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void dineInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dineInActionPerformed
         String cashTenderedStr = JOptionPane.showInputDialog(this, "Enter Cash Amount", "Serve Order", JOptionPane.OK_CANCEL_OPTION);
         double cashTendered = Double.valueOf(cashTenderedStr);
-        if( cashTendered > 0 ){
+        if (cashTendered > 0) {
             double changeAmount = (cashTendered - order.getTotal());
-            JOptionPane.showMessageDialog(this, "Change Amount is: "+changeAmount);
+            JOptionPane.showMessageDialog(this, "Change Amount is: " + changeAmount);
             order = new Order();//Server the order and reset the POS order details
             this.refreshOrderDetails(order);
         }
@@ -736,9 +741,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public void addToOrder(Order order) {
-        
+
     }
 
     public void refreshOrderDetails(Order order) {
