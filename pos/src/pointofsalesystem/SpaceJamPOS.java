@@ -712,7 +712,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             if (cashTendered > 0 && cashTendered >= order.getTotal()) {
                 double changeAmount = (cashTendered - order.getTotal());
                 JOptionPane.showMessageDialog(this, "Change Amount is: " + changeAmount);
-                order = new Order();//Server the order and reset the POS order details
+                order = new Order();//Serve the order and reset the POS order details
                 this.refreshOrderDetails(order);
             } else {
                 JOptionPane.showMessageDialog(this, "Insufficient Cash", "Serve Order", JOptionPane.ERROR_MESSAGE);
