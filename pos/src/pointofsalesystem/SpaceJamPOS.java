@@ -776,7 +776,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             order.getOrderDetail().put(product.getId(), item);
             order.setTotal(calculateTax(order.getSubTotal()));
             order.setTax(order.getSubTotal() - order.getTotal());
-            order.setSubTotal(order.getTotal() + newPrice);
+            order.setSubTotal(order.getSubTotal() + newPrice);
 
         } else {
             OrderItem newItem = new OrderItem();
@@ -784,7 +784,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             newItem.setPrice(product.getProductPrice());
             newItem.setQuantity(1);
             orderItemList.put(product.getId(), newItem);
-            order.setSubTotal(order.getTotal() + newItem.getPrice());
+            order.setSubTotal(order.getSubTotal()+ newItem.getPrice());
             order.setTotal(calculateTax(order.getSubTotal()));
             order.setTax(order.getSubTotal() - order.getTotal());
 
