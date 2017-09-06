@@ -714,6 +714,8 @@ public class SpaceJamPOS extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Change Amount is: " + changeAmount);
                 order = new Order();//Server the order and reset the POS order details
                 this.refreshOrderDetails(order);
+            }else{
+                JOptionPane.showMessageDialog(this, "Insufficient Cash", "Serve Order", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_dineInActionPerformed
