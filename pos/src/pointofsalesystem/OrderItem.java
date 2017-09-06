@@ -5,7 +5,7 @@
  */
 package pointofsalesystem;
 
-public class OrderDetail {
+public class OrderItem {
 
     private Integer id;
     private Integer quantity = 0;

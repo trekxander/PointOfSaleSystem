@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class Order {
 
     private Integer id;
-    private HashMap<Integer, OrderDetail> orderDetail = new HashMap<Integer, OrderDetail>();
+    private HashMap<Integer, OrderItem> orderDetail = new HashMap<Integer, OrderItem>();
     private Double subTotal = 0.0;
     private Double discount = 0.0;
     private Double tax = 0.0;
@@ -24,11 +24,11 @@ public class Order {
         this.id = id;
     }
 
-    public HashMap<Integer, OrderDetail> getOrderDetail() {
+    public HashMap<Integer, OrderItem> getOrderDetail() {
         return orderDetail;
     }
 
-    public void setOrderDetail(HashMap<Integer, OrderDetail> orderDetail) {
+    public void setOrderDetail(HashMap<Integer, OrderItem> orderDetail) {
         this.orderDetail = orderDetail;
     }
 
