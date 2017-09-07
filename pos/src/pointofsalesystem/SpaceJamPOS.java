@@ -774,9 +774,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             item.setPrice(newPrice);
 
             order.getOrderDetail().put(product.getId(), item);
-            order.setTotal(calculateTax(order.getSubTotal()));
-            order.setTax(order.getSubTotal() - order.getTotal());
             order.setSubTotal(order.getSubTotal() + newPrice);
+            order.setTotal(order.getSubTotal() + calculateTax(order.getSubTotal()));
+            order.setTax(calculateTax(order.getSubTotal()));
 
         } else {
             OrderItem newItem = new OrderItem();
@@ -784,9 +784,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             newItem.setPrice(product.getProductPrice());
             newItem.setQuantity(1);
             orderItemList.put(product.getId(), newItem);
-            order.setSubTotal(order.getSubTotal()+ newItem.getPrice());
-            order.setTotal(calculateTax(order.getSubTotal()));
-            order.setTax(order.getSubTotal() - order.getTotal());
+            order.setSubTotal(order.getSubTotal() + newItem.getPrice());
+            order.setTotal(order.getSubTotal() + calculateTax(order.getSubTotal()));
+            order.setTax(calculateTax(order.getSubTotal()));
 
             DefaultTableModel model = (DefaultTableModel) orderListTable.getModel();
             model.addRow(new Object[]{"", "", ""});
@@ -821,6 +821,8 @@ public class SpaceJamPOS extends javax.swing.JFrame {
                 double changeAmount = (cashTendered - order.getTotal());
                 JOptionPane.showMessageDialog(this, "Change Amount is: " + changeAmount);
                 order = new Order();//Serve the order and reset the POS order details
+                DefaultTableModel tableModel = (DefaultTableModel) orderListTable.getModel();
+                tableModel.setRowCount(0);
                 this.refreshOrderDetails(order);
             } else {
                 JOptionPane.showMessageDialog(this, "Insufficient Cash", "Serve Order", JOptionPane.ERROR_MESSAGE);
@@ -829,7 +831,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     }
 
     private double calculateTax(double total) {
-        return total - (total * TAX);
+        return (total * TAX);
     }
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         Product product = new Product();
