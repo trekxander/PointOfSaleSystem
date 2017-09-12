@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 public class SpaceJamPOS extends javax.swing.JFrame {
 
     private Order order;
-    private double TAX = 0.15;
+    private final double TAX = 0.15;
 
     /**
      * Creates new form NewJFrame
@@ -764,12 +764,12 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
-    public void addToOrder(Product product) {
+    public void addToOrder(Product product, int quantity) {
         HashMap<Integer, OrderItem> orderItemList = order.getOrderDetail();
         OrderItem item = orderItemList.get(product.getId());
         if (item != null) {
-            double newPrice = item.getPrice() + product.getProductPrice();
-            int newQuantity = item.getQuantity() + 1;
+            double newPrice = (item.getPrice() + product.getProductPrice());
+            int newQuantity = (item.getQuantity() + quantity);
             item.setQuantity(newQuantity);
             item.setPrice(newPrice);
 
@@ -782,7 +782,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             OrderItem newItem = new OrderItem();
             newItem.setProduct(product);
             newItem.setPrice(product.getProductPrice());
-            newItem.setQuantity(1);
+            newItem.setQuantity(quantity);
             orderItemList.put(product.getId(), newItem);
             order.setSubTotal(order.getSubTotal() + newItem.getPrice());
             order.setTotal(order.getSubTotal() + calculateTax(order.getSubTotal()));
@@ -838,8 +838,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         product.setId(1);
         product.setName("SCHUBSILOG");
         product.setProductPrice(55.0);
-
-        addToOrder(product);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void dineInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dineInActionPerformed
