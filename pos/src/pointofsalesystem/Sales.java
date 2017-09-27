@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pointofsalesystem;
 
 import java.util.HashMap;
 
-public class Order {
+public class Sales {
 
     private Integer id;
-    private HashMap<Integer, OrderItem> orderDetail = new HashMap<Integer, OrderItem>();
+    private HashMap<Integer, OrderItem> orderItem = new HashMap<>();
     private Double subTotal = 0.0;
     private Double discount = 0.0;
     private Double tax = 0.0;
@@ -24,12 +19,12 @@ public class Order {
         this.id = id;
     }
 
-    public HashMap<Integer, OrderItem> getOrderDetail() {
-        return orderDetail;
+    public HashMap<Integer, OrderItem> getOrderItem() {
+        return orderItem;
     }
 
-    public void setOrderDetail(HashMap<Integer, OrderItem> orderDetail) {
-        this.orderDetail = orderDetail;
+    public void setOrderItem(HashMap<Integer, OrderItem> orderDetail) {
+        this.orderItem = orderDetail;
     }
 
     public Double getSubTotal() {

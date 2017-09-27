@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pointofsalesystem;
 
 import java.awt.CardLayout;
@@ -16,14 +11,14 @@ import javax.swing.table.DefaultTableModel;
 
 public class SpaceJamPOS extends javax.swing.JFrame {
 
-    private Order order;
+    private Sales order;
     private final double TAX = 0.15;
 
     /**
      * Creates new form NewJFrame
      */
     public SpaceJamPOS() {
-        order = new Order();
+        order = new Sales();
         initComponents();
         //This is to center the frame in the screen
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -113,6 +108,8 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         productsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Menu", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         productsPanel.setLayout(new java.awt.CardLayout());
 
+        bestSilogPanel.setBackground(new java.awt.Color(3, 124, 6));
+
         jButton6.setText("SCHUBSILOG");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,7 +189,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
                         .add(jButton7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jButton8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(18, Short.MAX_VALUE))
+                        .addContainerGap(20, Short.MAX_VALUE))
                     .add(bestSilogPanelLayout.createSequentialGroup()
                         .add(bestSilogPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(bestSilogPanelLayout.createSequentialGroup()
@@ -265,14 +262,39 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         productsPanel.add(sharingPanel, "sharing");
 
         jButton24.setText("NACHORIFFIC");
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
 
         jButton25.setText("MOJOS");
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
 
         jButton26.setText("BEEF MAMI");
+        jButton26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton26ActionPerformed(evt);
+            }
+        });
 
         jButton27.setText("Creamy Carbonara w/ Crispy Pork Cutlet");
+        jButton27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton27ActionPerformed(evt);
+            }
+        });
 
-        jButton32.setText("Creamy Carbonara w/ Wild Wings");
+        jButton32.setText(" Wild Wings");
+        jButton32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton32ActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout specialPanelLayout = new org.jdesktop.layout.GroupLayout(specialPanel);
         specialPanel.setLayout(specialPanelLayout);
@@ -304,16 +326,46 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         productsPanel.add(specialPanel, "special");
 
         jButton33.setText("SAGO'T GULAMAN");
+        jButton33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton33ActionPerformed(evt);
+            }
+        });
 
         jButton34.setText("ICED TEA");
+        jButton34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton34ActionPerformed(evt);
+            }
+        });
 
         jButton35.setText("RED ICED TEA");
+        jButton35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton35ActionPerformed(evt);
+            }
+        });
 
         jButton36.setText("CUCUMBER");
+        jButton36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton36ActionPerformed(evt);
+            }
+        });
 
         jButton37.setText("RASPBERRY");
+        jButton37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton37ActionPerformed(evt);
+            }
+        });
 
         jButton41.setText("SPACE JAM's SIGNATURE DRINK");
+        jButton41.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton41ActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout drinksPanelLayout = new org.jdesktop.layout.GroupLayout(drinksPanel);
         drinksPanel.setLayout(drinksPanelLayout);
@@ -356,10 +408,25 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         productsPanel.add(drinksPanel, "drinks");
 
         jButton42.setText("SPECIAL HALO HALO");
+        jButton42.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton42ActionPerformed(evt);
+            }
+        });
 
         jButton43.setText("NUTELLA REESES");
+        jButton43.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton43ActionPerformed(evt);
+            }
+        });
 
         jButton44.setText("CARAMEL LATTE");
+        jButton44.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton44ActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout iceBlendedPanelLayout = new org.jdesktop.layout.GroupLayout(iceBlendedPanel);
         iceBlendedPanel.setLayout(iceBlendedPanelLayout);
@@ -367,33 +434,61 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             iceBlendedPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, iceBlendedPanelLayout.createSequentialGroup()
                 .add(0, 0, Short.MAX_VALUE)
-                .add(jButton42, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton43)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton44))
+                .add(iceBlendedPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                    .add(jButton42, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(iceBlendedPanelLayout.createSequentialGroup()
+                        .add(jButton43)
+                        .add(28, 28, 28)
+                        .add(jButton44, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .add(84, 84, 84))
         );
         iceBlendedPanelLayout.setVerticalGroup(
             iceBlendedPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(iceBlendedPanelLayout.createSequentialGroup()
+                .add(jButton42, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 58, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(18, 18, 18)
                 .add(iceBlendedPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jButton43, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jButton44, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jButton42, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 58, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(0, 470, Short.MAX_VALUE))
+                    .add(jButton43, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                    .add(jButton44, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(0, 394, Short.MAX_VALUE))
         );
 
         productsPanel.add(iceBlendedPanel, "iceBlended");
 
         jButton51.setText("ATCHARA");
+        jButton51.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton51ActionPerformed(evt);
+            }
+        });
 
         jButton52.setText("EXTRA EGG");
+        jButton52.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton52ActionPerformed(evt);
+            }
+        });
 
         jButton53.setText("CHICKEN DIP");
+        jButton53.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton53ActionPerformed(evt);
+            }
+        });
 
         jButton54.setText("PLAIN RICE");
+        jButton54.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton54ActionPerformed(evt);
+            }
+        });
 
         jButton55.setText("GARLIC RICE");
+        jButton55.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton55ActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout extraPanelLayout = new org.jdesktop.layout.GroupLayout(extraPanel);
         extraPanel.setLayout(extraPanelLayout);
@@ -461,6 +556,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
         productsPanel.add(managerPanel, "manager");
 
+        jPanel3.setBackground(new java.awt.Color(92, 143, 3));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Orders", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         orderListTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -594,18 +690,21 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .add(4, 4, 4)
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 255, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(18, 18, 18)
                 .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel1.setBackground(new java.awt.Color(0, 206, 252));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Categories", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
+        bestSilog.setBackground(new java.awt.Color(204, 204, 204));
         categoryButtonGroup.add(bestSilog);
+        bestSilog.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         bestSilog.setText("BESTSILOG");
         bestSilog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -613,7 +712,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             }
         });
 
+        sharing.setBackground(new java.awt.Color(204, 204, 204));
         categoryButtonGroup.add(sharing);
+        sharing.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         sharing.setText("SHARING");
         sharing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -621,7 +722,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             }
         });
 
+        special.setBackground(new java.awt.Color(204, 204, 204));
         categoryButtonGroup.add(special);
+        special.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         special.setText("SPECIAL");
         special.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -629,7 +732,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             }
         });
 
+        drinks.setBackground(new java.awt.Color(204, 204, 204));
         categoryButtonGroup.add(drinks);
+        drinks.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         drinks.setText("DRINKS");
         drinks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -637,7 +742,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             }
         });
 
+        iceBlended.setBackground(new java.awt.Color(204, 204, 204));
         categoryButtonGroup.add(iceBlended);
+        iceBlended.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         iceBlended.setText("ICE BLENDED");
         iceBlended.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -645,7 +752,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             }
         });
 
+        extra.setBackground(new java.awt.Color(204, 204, 204));
         categoryButtonGroup.add(extra);
+        extra.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         extra.setText("EXTRA");
         extra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -765,50 +874,47 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     public void addToOrder(Product product, int quantity) {
-        HashMap<Integer, OrderItem> orderItemList = order.getOrderDetail();
+        HashMap<Integer, OrderItem> orderItemList = order.getOrderItem();
         OrderItem item = orderItemList.get(product.getId());
         if (item != null) {
             double newPrice = (item.getPrice() + product.getProductPrice());
             int newQuantity = (item.getQuantity() + quantity);
             item.setQuantity(newQuantity);
             item.setPrice(newPrice);
-
-            order.getOrderDetail().put(product.getId(), item);
+            order.getOrderItem().put(product.getId(), item);
             order.setSubTotal(order.getSubTotal() + newPrice);
             order.setTotal(order.getSubTotal() + calculateTax(order.getSubTotal()));
             order.setTax(calculateTax(order.getSubTotal()));
-
         } else {
             OrderItem newItem = new OrderItem();
-            newItem.setProduct(product);
-            newItem.setPrice(product.getProductPrice());
+            newItem.setProductId(product);
+            newItem.setPrice(product.getProductPrice() * quantity);
             newItem.setQuantity(quantity);
             orderItemList.put(product.getId(), newItem);
-            order.setSubTotal(order.getSubTotal() + newItem.getPrice());
+            order.setSubTotal(order.getSubTotal() + newItem.getPrice() * quantity);
             order.setTotal(order.getSubTotal() + calculateTax(order.getSubTotal()));
             order.setTax(calculateTax(order.getSubTotal()));
 
             DefaultTableModel model = (DefaultTableModel) orderListTable.getModel();
             model.addRow(new Object[]{"", "", ""});
         }
-        refreshOrderDetails(order);
+        refreshOrderDisplay(order);
     }
 
-    public void refreshOrderDetails(Order order) {
+    public void refreshOrderDisplay(Sales order) {
         subtotalTxt.setText(String.valueOf(order.getSubTotal()));
         discountTxt.setText(String.valueOf(order.getDiscount()));
         taxTxt.setText(String.valueOf(order.getTax()));
         totalTxt.setText(String.valueOf(order.getTotal()));
 
-        Collection<OrderItem> orderItemList = order.getOrderDetail().values();
+        Collection<OrderItem> orderItemList = order.getOrderItem().values();
         int i = 0;
         for (OrderItem item : orderItemList) {
             orderListTable.setValueAt(item.getQuantity(), i, 0);
-            orderListTable.setValueAt(item.getProduct().getName(), i, 1);
+            orderListTable.setValueAt(item.getProductId().getName(), i, 1);
             orderListTable.setValueAt(item.getPrice(), i, 2);
             i++;
         }
-
     }
 
     private void serveOrder() {
@@ -820,10 +926,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             if (cashTendered > 0 && cashTendered >= order.getTotal()) {
                 double changeAmount = (cashTendered - order.getTotal());
                 JOptionPane.showMessageDialog(this, "Change Amount is: " + changeAmount);
-                order = new Order();//Serve the order and reset the POS order details
+                order = new Sales();//Serve the order and reset the POS order details
                 DefaultTableModel tableModel = (DefaultTableModel) orderListTable.getModel();
                 tableModel.setRowCount(0);
-                this.refreshOrderDetails(order);
+                this.refreshOrderDisplay(order);
             } else {
                 JOptionPane.showMessageDialog(this, "Insufficient Cash", "Serve Order", JOptionPane.ERROR_MESSAGE);
             }
@@ -856,8 +962,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         product.setId(2);
         product.setName("LONG SILOG");
         product.setProductPrice(60.0);
-
-        addToOrder(product);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -865,8 +972,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         product.setId(3);
         product.setName("TOCI LOG");
         product.setProductPrice(70.0);
-
-        addToOrder(product);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -874,8 +982,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         product.setId(4);
         product.setName("PORK SILOG");
         product.setProductPrice(70.0);
-
-        addToOrder(product);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
@@ -883,8 +992,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         product.setId(5);
         product.setName("TAP SILOG");
         product.setProductPrice(75.0);
-
-        addToOrder(product);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
@@ -892,8 +1002,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         product.setId(6);
         product.setName("SISI SILOG");
         product.setProductPrice(75.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
 
-        addToOrder(product);
+        addToOrder(product, quantity);
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
@@ -901,8 +1013,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         product.setId(7);
         product.setName("BANG SILOG");
         product.setProductPrice(80.0);
-
-        addToOrder(product);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
@@ -910,8 +1023,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         product.setId(8);
         product.setName("LIEMPO SILOG");
         product.setProductPrice(85.0);
-
-        addToOrder(product);        // TODO add your handling code here:
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
@@ -919,8 +1033,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         product.setId(9);
         product.setName("CHICK SILOG");
         product.setProductPrice(85.0);
-
-        addToOrder(product);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -928,8 +1043,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         product.setId(10);
         product.setName("SISIG JAMMERS");
         product.setProductPrice(100.0);
-
-        addToOrder(product);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
@@ -937,9 +1053,219 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         product.setId(11);
         product.setName("CHICKEN MOMOLS");
         product.setProductPrice(220.0);
-
-        addToOrder(product);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
     }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(13);
+        product.setName("Iced Tea");
+        product.setProductPrice(45.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton34ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(14);
+        product.setName("NACHORIFFIC");
+        product.setProductPrice(60.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton24ActionPerformed
+
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(12);
+        product.setName("Mojos");
+        product.setProductPrice(120.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton25ActionPerformed
+
+    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(13);
+        product.setName("Beef Mami");
+        product.setProductPrice(70.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton26ActionPerformed
+
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(15);
+        product.setName("Creamy Carbonara w/ Crispy Pork Cutlet");
+        product.setProductPrice(80.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton27ActionPerformed
+
+    private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(16);
+        product.setName("Wild Wings");
+        product.setProductPrice(80.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton32ActionPerformed
+
+    private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(21);
+        product.setName("Sagot Gulaman");
+        product.setProductPrice(30.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton33ActionPerformed
+
+    private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(17);
+        product.setName("Red Iced Tea");
+        product.setProductPrice(45.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton35ActionPerformed
+
+    private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(18);
+        product.setName("cucumber");
+        product.setProductPrice(50.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton36ActionPerformed
+
+    private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(19);
+        product.setName("Raspberry");
+        product.setProductPrice(80.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton37ActionPerformed
+
+    private void jButton41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton41ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(20);
+        product.setName("SPACE JAM's SIGNATURE DRINK");
+        product.setProductPrice(50.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton41ActionPerformed
+
+    private void jButton42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton42ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(22);
+        product.setName("Special halohalo");
+        product.setProductPrice(50.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton42ActionPerformed
+
+    private void jButton51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton51ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(25);
+        product.setName("Atchara");
+        product.setProductPrice(5.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton51ActionPerformed
+
+    private void jButton43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton43ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(23);
+        product.setName("Nutella eeses");
+        product.setProductPrice(70.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton43ActionPerformed
+
+    private void jButton44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton44ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(24);
+        product.setName("Caramel Latte");
+        product.setProductPrice(55.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton44ActionPerformed
+
+    private void jButton52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton52ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(26);
+        product.setName("Extra Egg");
+        product.setProductPrice(10.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton52ActionPerformed
+
+    private void jButton53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton53ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(27);
+        product.setName("Chicken Dip");
+        product.setProductPrice(10.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton53ActionPerformed
+
+    private void jButton54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton54ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(28);
+        product.setName("Plain Rice");
+        product.setProductPrice(10.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton54ActionPerformed
+
+    private void jButton55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton55ActionPerformed
+        // TODO add your handling code here:
+        Product product = new Product();
+        product.setId(29);
+        product.setName("Garlic Rice");
+        product.setProductPrice(15.0);
+        String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        int quantity = Integer.valueOf(qty);
+        addToOrder(product, quantity);
+    }//GEN-LAST:event_jButton55ActionPerformed
 
     /**
      * @param args the command line arguments

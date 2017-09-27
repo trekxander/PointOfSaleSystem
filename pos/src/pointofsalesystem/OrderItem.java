@@ -9,7 +9,7 @@ public class OrderItem {
 
     private Integer id;
     private Integer quantity = 0;
-    private Product product;
+    private Product product_id;
     private Double price = 0.0;
 
     public Integer getId() {
@@ -28,12 +28,12 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
-    public Product getProduct() {
-        return product;
+    public Product getProductId() {
+        return product_id;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductId(Product product) {
+        this.product_id = product;
     }
 
     public Double getPrice() {

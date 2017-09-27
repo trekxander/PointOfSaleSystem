@@ -6,7 +6,7 @@
 package pointofsalesystem;
 
 
-public class ProductCategory {
+public class Category {
     private Integer id;
     private String name;
 

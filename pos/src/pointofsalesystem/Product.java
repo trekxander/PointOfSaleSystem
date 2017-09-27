@@ -9,7 +9,7 @@ public class Product {
 
     private Integer id;
     private String name;
-    private ProductCategory category;
+    private Category category_id;
     private Double productPrice = 0.0;
 
     public Integer getId() {
@@ -28,12 +28,12 @@ public class Product {
         this.name = Name;
     }
 
-    public ProductCategory getCategory() {
-        return category;
+    public Category getCategoryId() {
+        return category_id;
     }
 
-    public void setCategory(ProductCategory category) {
-        this.category = category;
+    public void setCategoryId(Category category) {
+        this.category_id = category;
     }
 
     public Double getProductPrice() {
