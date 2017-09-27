@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class Sales {
 
     private Integer id;
-    private HashMap<Integer, OrderItem> orderItem = new HashMap<>();
+    private HashMap<Long, OrderItem> orderItem = new HashMap<>();
     private Double subTotal = 0.0;
     private Double discount = 0.0;
     private Double tax = 0.0;
@@ -19,11 +19,11 @@ public class Sales {
         this.id = id;
     }
 
-    public HashMap<Integer, OrderItem> getOrderItem() {
+    public HashMap<Long, OrderItem> getOrderItem() {
         return orderItem;
     }
 
-    public void setOrderItem(HashMap<Integer, OrderItem> orderDetail) {
+    public void setOrderItem(HashMap<Long, OrderItem> orderDetail) {
         this.orderItem = orderDetail;
     }
 
