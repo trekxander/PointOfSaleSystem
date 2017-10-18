@@ -575,6 +575,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
                 "Quantity", "Poduct", "Price"
             }
         ));
+        orderListTable.setEnabled(false);
         jScrollPane1.setViewportView(orderListTable);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -952,9 +953,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
 //        Product product = new Product();
 //        product.setId(1);
-//        product.setName("SCHUBSILOG");
+//        product.setName("CHUBSILOGS");
 //        product.setProductPrice(55.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
+        
         int quantity = Integer.valueOf(qty);
         addToOrder(product, quantity);
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -968,17 +970,22 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     }//GEN-LAST:event_takeAwayActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        Product product = new Product();
-//        product.setId(2);
-        product.setName("LONG SILOG");
-        product.setProductPrice(60.0);
+        query.setParameter("id", 2);
+        Product product = query.getSingleResult();
+//      Product product = new Product();
+//      product.setId(2);
+ //     product.setName("LONG SILOG");
+ //     product.setProductPrice(60.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
         int quantity = Integer.valueOf(qty);
         addToOrder(product, quantity);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        Product product = new Product();
+        query.setParameter("id", 3);
+        Product product = query.getSingleResult();
+        
+  //      Product product = new Product();
 //        product.setId(3);
 //        product.setName("TOCI LOG");
 //        product.setProductPrice(70.0);
@@ -988,7 +995,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        Product product = new Product();
+        query.setParameter("id", 4);
+        Product product = query.getSingleResult();
+//        Product product = new Product();
 //        product.setId(4);
 //        product.setName("PORK SILOG");
 //        product.setProductPrice(70.0);
@@ -998,7 +1007,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        Product product = new Product();
+        query.setParameter("id", 5);
+        Product product = query.getSingleResult();
+ //       Product product = new Product();
 //        product.setId(5);
 //        product.setName("TAP SILOG");
 //        product.setProductPrice(75.0);
@@ -1008,7 +1019,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        Product product = new Product();
+        query.setParameter("id", 6);
+        Product product = query.getSingleResult();
+        
+//        Product product = new Product();
 //        product.setId(6);
 //        product.setName("SISI SILOG");
 //        product.setProductPrice(75.0);
@@ -1019,7 +1033,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        Product product = new Product();
+        query.setParameter("id", 7);
+        Product product = query.getSingleResult();
+ //       Product product = new Product();
 //        product.setId(7);
         product.setName("BANG SILOG");
         product.setProductPrice(80.0);
@@ -1029,7 +1045,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        Product product = new Product();
+       query.setParameter("id", 8);
+        Product product = query.getSingleResult();
+  //      Product product = new Product();
 //        product.setId(8);
         product.setName("LIEMPO SILOG");
         product.setProductPrice(85.0);
@@ -1039,7 +1057,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        Product product = new Product();
+        query.setParameter("id", 9);
+        Product product = query.getSingleResult();
+  //      Product product = new Product();
 //        product.setId(9);
         product.setName("CHICK SILOG");
         product.setProductPrice(85.0);
@@ -1049,7 +1069,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        Product product = new Product();
+        query.setParameter("id", 10);
+        Product product = query.getSingleResult();
+  //      Product product = new Product();
 //        product.setId(10);
         product.setName("SISIG JAMMERS");
         product.setProductPrice(100.0);
@@ -1059,7 +1081,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        Product product = new Product();
+        query.setParameter("id", 11);
+        Product product = query.getSingleResult();
+ //       Product product = new Product();
 //        product.setId(11);
         product.setName("CHICKEN MOMOLS");
         product.setProductPrice(220.0);
@@ -1070,8 +1094,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(13);
+        query.setParameter("id", 12);
+        Product product = query.getSingleResult();
+  //      Product product = new Product();
+//        product.setId(12);
         product.setName("Iced Tea");
         product.setProductPrice(45.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
@@ -1081,8 +1107,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(14);
+       query.setParameter("id", 13);
+        Product product = query.getSingleResult();
+  //      Product product = new Product();
+//        product.setId(13);
         product.setName("NACHORIFFIC");
         product.setProductPrice(60.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
@@ -1092,8 +1120,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(12);
+        query.setParameter("id", 14);
+        Product product = query.getSingleResult();
+  //      Product product = new Product();
+//        product.setId(14);
         product.setName("Mojos");
         product.setProductPrice(120.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
@@ -1103,8 +1133,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(13);
+       query.setParameter("id", 15);
+        Product product = query.getSingleResult();
+  //      Product product = new Product();
+//        product.setId(15);
         product.setName("Beef Mami");
         product.setProductPrice(70.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
@@ -1114,8 +1146,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(15);
+        query.setParameter("id", 16);
+        Product product = query.getSingleResult();
+  //      Product product = new Product();
+//        product.setId(16);
         product.setName("Creamy Carbonara w/ Crispy Pork Cutlet");
         product.setProductPrice(80.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
@@ -1125,9 +1159,11 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(16);
-        product.setName("Wild Wings");
+        query.setParameter("id", 17);
+        Product product = query.getSingleResult();
+//        Product product = new Product();
+//        product.setId(17);
+            product.setName("Wild Wings");
         product.setProductPrice(80.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
         int quantity = Integer.valueOf(qty);
@@ -1136,8 +1172,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(21);
+        query.setParameter("id", 18);
+        Product product = query.getSingleResult();
+//        Product product = new Product();
+//        product.setId(18);
         product.setName("Sagot Gulaman");
         product.setProductPrice(30.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
@@ -1147,8 +1185,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(17);
+        query.setParameter("id", 19);
+        Product product = query.getSingleResult();
+ //       Product product = new Product();
+//        product.setId(19);
         product.setName("Red Iced Tea");
         product.setProductPrice(45.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
@@ -1158,8 +1198,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(18);
+        query.setParameter("id", 20);
+        Product product = query.getSingleResult();
+ //       Product product = new Product();
+//        product.setId(20);
         product.setName("cucumber");
         product.setProductPrice(50.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
@@ -1169,8 +1211,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(19);
+        query.setParameter("id", 21);
+        Product product = query.getSingleResult();
+ //       Product product = new Product();
+//        product.setId(21);
         product.setName("Raspberry");
         product.setProductPrice(80.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
@@ -1180,8 +1224,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton41ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(20);
+        query.setParameter("id", 22);
+        Product product = query.getSingleResult();
+//        Product product = new Product();
+//        product.setId(22);
         product.setName("SPACE JAM's SIGNATURE DRINK");
         product.setProductPrice(50.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
@@ -1191,8 +1237,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton42ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(22);
+        query.setParameter("id", 23);
+        Product product = query.getSingleResult();
+ //       Product product = new Product();
+//        product.setId(23);
         product.setName("Special halohalo");
         product.setProductPrice(50.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
@@ -1202,8 +1250,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton51ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(25);
+        query.setParameter("id", 24);
+        Product product = query.getSingleResult();
+ //       Product product = new Product();
+//        product.setId(24);
         product.setName("Atchara");
         product.setProductPrice(5.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
@@ -1213,8 +1263,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton43ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(23);
+       query.setParameter("id", 25);
+        Product product = query.getSingleResult();
+//        Product product = new Product();
+//        product.setId(25);
         product.setName("Nutella eeses");
         product.setProductPrice(70.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
@@ -1224,8 +1276,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton44ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(24);
+        query.setParameter("id", 26);
+        Product product = query.getSingleResult();
+ //       Product product = new Product();
+//        product.setId(26);
         product.setName("Caramel Latte");
         product.setProductPrice(55.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
@@ -1235,8 +1289,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton52ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(26);
+        query.setParameter("id", 27);
+        Product product = query.getSingleResult();
+ //       Product product = new Product();
+//        product.setId(27);
         product.setName("Extra Egg");
         product.setProductPrice(10.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
@@ -1246,8 +1302,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton53ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(27);
+        query.setParameter("id",28);
+        Product product = query.getSingleResult();
+ //       Product product = new Product();
+//        product.setId(28);
         product.setName("Chicken Dip");
         product.setProductPrice(10.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
@@ -1257,8 +1315,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton54ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(28);
+        query.setParameter("id", 29);
+        Product product = query.getSingleResult();
+  //      Product product = new Product();
+//        product.setId(29);
         product.setName("Plain Rice");
         product.setProductPrice(10.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
@@ -1268,8 +1328,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
     private void jButton55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton55ActionPerformed
         // TODO add your handling code here:
-        Product product = new Product();
-//        product.setId(29);
+        query.setParameter("id", 30);
+        Product product = query.getSingleResult();
+ //       Product product = new Product();
+//        product.setId(30);
         product.setName("Garlic Rice");
         product.setProductPrice(15.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);

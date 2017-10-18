@@ -6,6 +6,7 @@
 package pointofsalesystem;
 
 import com.sun.net.httpserver.Authenticator.Success;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -65,6 +66,11 @@ public class Login extends javax.swing.JFrame {
         jPanel2.setLayout(null);
 
         Jpass.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        Jpass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JpassKeyPressed(evt);
+            }
+        });
         jPanel2.add(Jpass);
         Jpass.setBounds(90, 140, 205, 32);
 
@@ -115,6 +121,13 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void JpassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JpassKeyPressed
+        // TODO add your handling code
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         try{
             String password = Jpass.getText();
             String username = jUser.getText();
@@ -152,8 +165,8 @@ public class Login extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }//GEN-LAST:event_JpassKeyPressed
+    }
     /**
      * @param args the command line arguments
      */
