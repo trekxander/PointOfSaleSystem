@@ -944,6 +944,8 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             if (cashTendered > 0 && cashTendered >= order.getTotal()) {
                 double changeAmount = (cashTendered - order.getTotal());
                 JOptionPane.showMessageDialog(this, "Change Amount is: " + changeAmount);
+                DefaultTableModel model = (DefaultTableModel) orderListTable.getModel();
+                model.addRow(new Object[]{"TOTAL: ", "", order.getTotal()});
                 this.printReceipt(orderListTable);
                 order = new Sales();//Serve the order and reset the POS order details
                 DefaultTableModel tableModel = (DefaultTableModel) orderListTable.getModel();
