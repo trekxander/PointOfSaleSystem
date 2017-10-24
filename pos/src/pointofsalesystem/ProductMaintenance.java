@@ -123,16 +123,11 @@ public class ProductMaintenance extends JPanel {
 
         productPriceField.addActionListener(formListener);
 
-        saveButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Angelo\\Desktop\\LOGO\\s.png")); // NOI18N
         saveButton.addActionListener(formListener);
 
-        refreshButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Angelo\\Desktop\\LOGO\\r.png")); // NOI18N
         refreshButton.addActionListener(formListener);
 
-        newButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Angelo\\Desktop\\LOGO\\a.png")); // NOI18N
         newButton.addActionListener(formListener);
-
-        deleteButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Angelo\\Desktop\\LOGO\\x.png")); // NOI18N
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), deleteButton, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);

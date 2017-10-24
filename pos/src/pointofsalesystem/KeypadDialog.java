@@ -20,8 +20,9 @@ public class KeypadDialog extends javax.swing.JDialog {
      */
     private String inputValue = "";
 
-    public KeypadDialog(java.awt.Frame parent, boolean modal) {
+    public KeypadDialog(java.awt.Frame parent, boolean modal, String title) {
         super(parent, modal);
+        this.setTitle(title);
         initComponents();
                 //This is to center the frame in the screen
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -277,20 +278,6 @@ public class KeypadDialog extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(SpaceJamPOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                KeypadDialog dialog = new KeypadDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -3,11 +3,14 @@ package pointofsalesystem;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.print.PrinterException;
 import java.util.Collection;
 import java.util.HashMap;
-import javax.persistence.Query;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.TypedQuery;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
@@ -874,7 +877,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     }//GEN-LAST:event_extraActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        String managerPIN = JOptionPane.showInputDialog(this, "Enter Manager's PIN", "Manager Menu", JOptionPane.OK_CANCEL_OPTION);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Manager's PIN");
+        keyPad.setVisible(true);
+        String managerPIN = keyPad.getInputValue();//JOptionPane.showInputDialog(this, "Enter Manager's PIN", "Manager Menu", JOptionPane.OK_CANCEL_OPTION);
         if (managerPIN.equals("1234")) {
             CardLayout card = (CardLayout) (productsPanel.getLayout());
             card.show(productsPanel, "manager");
@@ -928,7 +933,10 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     }
 
     private void serveOrder() {
-        String cashTenderedStr = JOptionPane.showInputDialog(this, "Enter Cash Amount", "Serve Order", JOptionPane.OK_CANCEL_OPTION);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Amount");
+        keyPad.setVisible(true);
+//        String qty = keyPad.getInputValue();
+        String cashTenderedStr = keyPad.getInputValue();//JOptionPane.showInputDialog(this, "Enter Cash Amount", "Serve Order", JOptionPane.OK_CANCEL_OPTION);
         if (cashTenderedStr.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Invalid Amount", "Serve Order", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -936,6 +944,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
             if (cashTendered > 0 && cashTendered >= order.getTotal()) {
                 double changeAmount = (cashTendered - order.getTotal());
                 JOptionPane.showMessageDialog(this, "Change Amount is: " + changeAmount);
+                this.printReceipt(orderListTable);
                 order = new Sales();//Serve the order and reset the POS order details
                 DefaultTableModel tableModel = (DefaultTableModel) orderListTable.getModel();
                 tableModel.setRowCount(0);
@@ -956,7 +965,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 //        product.setId(1);
 //        product.setName("CHUBSILOGS");
 //        product.setProductPrice(55.0);JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -966,7 +975,13 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     private void dineInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dineInActionPerformed
         this.serveOrder();
     }//GEN-LAST:event_dineInActionPerformed
-
+    private void printReceipt(JTable table) {
+        try {
+            table.print();
+        } catch (PrinterException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Print Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     private void takeAwayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_takeAwayActionPerformed
         this.serveOrder();
     }//GEN-LAST:event_takeAwayActionPerformed
@@ -978,7 +993,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 //      product.setId(2);
         //     product.setName("LONG SILOG");
         //     product.setProductPrice(60.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -993,7 +1008,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 //        product.setId(3);
 //        product.setName("TOCI LOG");
 //        product.setProductPrice(70.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1007,7 +1022,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 //        product.setId(4);
 //        product.setName("PORK SILOG");
 //        product.setProductPrice(70.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1021,7 +1036,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 //        product.setId(5);
 //        product.setName("TAP SILOG");
 //        product.setProductPrice(75.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1036,7 +1051,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 //        product.setId(6);
 //        product.setName("SISI SILOG");
 //        product.setProductPrice(75.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1049,9 +1064,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //       Product product = new Product();
 //        product.setId(7);
-        product.setName("BANG SILOG");
-        product.setProductPrice(80.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("BANG SILOG");
+//        product.setProductPrice(80.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1063,9 +1078,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //      Product product = new Product();
 //        product.setId(8);
-        product.setName("LIEMPO SILOG");
-        product.setProductPrice(85.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("LIEMPO SILOG");
+//        product.setProductPrice(85.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1077,9 +1092,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //      Product product = new Product();
 //        product.setId(9);
-        product.setName("CHICK SILOG");
-        product.setProductPrice(85.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("CHICK SILOG");
+//        product.setProductPrice(85.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1091,9 +1106,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //      Product product = new Product();
 //        product.setId(10);
-        product.setName("SISIG JAMMERS");
-        product.setProductPrice(100.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("SISIG JAMMERS");
+//        product.setProductPrice(100.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1105,9 +1120,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //       Product product = new Product();
 //        product.setId(11);
-        product.setName("CHICKEN MOMOLS");
-        product.setProductPrice(220.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("CHICKEN MOMOLS");
+//        product.setProductPrice(220.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1120,9 +1135,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //      Product product = new Product();
 //        product.setId(12);
-        product.setName("Iced Tea");
-        product.setProductPrice(45.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("Iced Tea");
+//        product.setProductPrice(45.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1135,9 +1150,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //      Product product = new Product();
 //        product.setId(13);
-        product.setName("NACHORIFFIC");
-        product.setProductPrice(60.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("NACHORIFFIC");
+//        product.setProductPrice(60.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1150,9 +1165,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //      Product product = new Product();
 //        product.setId(14);
-        product.setName("Mojos");
-        product.setProductPrice(120.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("Mojos");
+//        product.setProductPrice(120.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1165,9 +1180,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //      Product product = new Product();
 //        product.setId(15);
-        product.setName("Beef Mami");
-        product.setProductPrice(70.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("Beef Mami");
+//        product.setProductPrice(70.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1180,9 +1195,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //      Product product = new Product();
 //        product.setId(16);
-        product.setName("Creamy Carbonara w/ Crispy Pork Cutlet");
-        product.setProductPrice(80.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("Creamy Carbonara w/ Crispy Pork Cutlet");
+//        product.setProductPrice(80.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1195,9 +1210,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
 //        Product product = new Product();
 //        product.setId(17);
-        product.setName("Wild Wings");
-        product.setProductPrice(80.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("Wild Wings");
+//        product.setProductPrice(80.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1210,9 +1225,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
 //        Product product = new Product();
 //        product.setId(18);
-        product.setName("Sagot Gulaman");
-        product.setProductPrice(30.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("Sagot Gulaman");
+//        product.setProductPrice(30.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1225,9 +1240,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //       Product product = new Product();
 //        product.setId(19);
-        product.setName("Red Iced Tea");
-        product.setProductPrice(45.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("Red Iced Tea");
+//        product.setProductPrice(45.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1240,9 +1255,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //       Product product = new Product();
 //        product.setId(20);
-        product.setName("cucumber");
-        product.setProductPrice(50.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("cucumber");
+//        product.setProductPrice(50.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1255,9 +1270,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //       Product product = new Product();
 //        product.setId(21);
-        product.setName("Raspberry");
-        product.setProductPrice(80.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("Raspberry");
+//        product.setProductPrice(80.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1270,9 +1285,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
 //        Product product = new Product();
 //        product.setId(22);
-        product.setName("SPACE JAM's SIGNATURE DRINK");
-        product.setProductPrice(50.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("SPACE JAM's SIGNATURE DRINK");
+//        product.setProductPrice(50.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1285,9 +1300,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //       Product product = new Product();
 //        product.setId(23);
-        product.setName("Special halohalo");
-        product.setProductPrice(50.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("Special halohalo");
+//        product.setProductPrice(50.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1300,8 +1315,8 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //       Product product = new Product();
 //        product.setId(24);
-        product.setName("Atchara");
-        product.setProductPrice(5.0);
+//        product.setName("Atchara");
+//        product.setProductPrice(5.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
         int quantity = Integer.valueOf(qty);
         addToOrder(product, quantity);
@@ -1313,9 +1328,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
 //        Product product = new Product();
 //        product.setId(25);
-        product.setName("Nutella eeses");
-        product.setProductPrice(70.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("Nutella eeses");
+//        product.setProductPrice(70.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1328,9 +1343,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //       Product product = new Product();
 //        product.setId(26);
-        product.setName("Caramel Latte");
-        product.setProductPrice(55.0);
-        KeypadDialog keyPad = new KeypadDialog(this, true);
+//        product.setName("Caramel Latte");
+//        product.setProductPrice(55.0);
+        KeypadDialog keyPad = new KeypadDialog(this, true, "Enter Product Quantity");
         keyPad.setVisible(true);
         String qty = keyPad.getInputValue();
         int quantity = Integer.valueOf(qty);
@@ -1343,8 +1358,8 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //       Product product = new Product();
 //        product.setId(27);
-        product.setName("Extra Egg");
-        product.setProductPrice(10.0);
+//        product.setName("Extra Egg");
+//        product.setProductPrice(10.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
         int quantity = Integer.valueOf(qty);
         addToOrder(product, quantity);
@@ -1356,8 +1371,8 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //       Product product = new Product();
 //        product.setId(28);
-        product.setName("Chicken Dip");
-        product.setProductPrice(10.0);
+//        product.setName("Chicken Dip");
+//        product.setProductPrice(10.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
         int quantity = Integer.valueOf(qty);
         addToOrder(product, quantity);
@@ -1369,8 +1384,8 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //      Product product = new Product();
 //        product.setId(29);
-        product.setName("Plain Rice");
-        product.setProductPrice(10.0);
+//        product.setName("Plain Rice");
+//        product.setProductPrice(10.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
         int quantity = Integer.valueOf(qty);
         addToOrder(product, quantity);
@@ -1382,8 +1397,8 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         Product product = query.getSingleResult();
         //       Product product = new Product();
 //        product.setId(30);
-        product.setName("Garlic Rice");
-        product.setProductPrice(15.0);
+//        product.setName("Garlic Rice");
+//        product.setProductPrice(15.0);
         String qty = JOptionPane.showInputDialog(this, "Enter Quantity: ", "SpaceJam", JOptionPane.OK_OPTION);
         int quantity = Integer.valueOf(qty);
         addToOrder(product, quantity);
