@@ -4,8 +4,14 @@ import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.print.PrinterException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.TypedQuery;
@@ -88,6 +94,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         orderListTable = new javax.swing.JTable();
@@ -542,6 +549,13 @@ public class SpaceJamPOS extends javax.swing.JFrame {
 
         jButton3.setText("REFUND ORDER");
 
+        jButton4.setText("Sales Report");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout managerPanelLayout = new org.jdesktop.layout.GroupLayout(managerPanel);
         managerPanel.setLayout(managerPanelLayout);
         managerPanelLayout.setHorizontalGroup(
@@ -551,7 +565,8 @@ public class SpaceJamPOS extends javax.swing.JFrame {
                 .add(managerPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jButton3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                     .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jButton4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         managerPanelLayout.setVerticalGroup(
@@ -563,7 +578,9 @@ public class SpaceJamPOS extends javax.swing.JFrame {
                 .add(jButton2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 58, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jButton3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 58, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(321, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jButton4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 61, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(249, Short.MAX_VALUE))
         );
 
         productsPanel.add(managerPanel, "manager");
@@ -946,6 +963,25 @@ public class SpaceJamPOS extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Change Amount is: " + changeAmount);
                 DefaultTableModel model = (DefaultTableModel) orderListTable.getModel();
                 model.addRow(new Object[]{"TOTAL: ", "", order.getTotal()});
+                try {
+                    Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+                    Connection conn = DriverManager.getConnection("jdbc:derby:C:\\Users\\IBM_ADMIN\\Documents\\NetBeansProjects\\PointOfSaleSystem\\pos\\test");
+                    if (conn != null) {
+                        Random rand = new Random();
+                        int salesId = rand.nextInt(50) + 1;
+                        Statement stmt = conn.createStatement();
+                        stmt.executeUpdate("INSERT INTO SALES (ID, SUB_TOTAL,DISCOUNT,TAX,TOTAL,SALE_DATE) "
+                                + "VALUES (" + salesId + "," + order.getSubTotal() + ", " + order.getDiscount() + ", " + order.getTax() + ", " + order.getTotal() + ", CURRENT_DATE )");
+
+                        for (OrderItem item : order.getOrderItem().values()) {
+                            stmt.executeUpdate("INSERT INTO ORDER_ITEM (QUANTITY, PRODUCT_ID, PRICE, SALES_ID) "
+                                    + "VALUES (" + item.getQuantity() + ", " + item.getProductId().getId() + ", " + item.getPrice() + ", " + salesId + ")");
+                        }
+                    }
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(SpaceJamPOS.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 this.printReceipt(orderListTable);
                 order = new Sales();//Serve the order and reset the POS order details
                 DefaultTableModel tableModel = (DefaultTableModel) orderListTable.getModel();
@@ -1406,6 +1442,50 @@ public class SpaceJamPOS extends javax.swing.JFrame {
         addToOrder(product, quantity);
     }//GEN-LAST:event_jButton55ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Object[] selectionValues = {"DAILY SALES REPORT", "WEEKLY SALES REPORT", "MONTHLY SALES REPORT", "YEARLY SALES REPORT"};
+        String initialSelection = "Current Day Report";
+        Object selection = JOptionPane.showInputDialog(null, "Select which report you want to generate",
+                "Zoo Quiz", JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
+        if (selection.equals("DAILY SALES REPORT")) {
+            try {
+                Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+                Connection conn = DriverManager.getConnection("jdbc:derby:C:\\Users\\IBM_ADMIN\\Documents\\NetBeansProjects\\PointOfSaleSystem\\pos\\test");
+                if (conn != null) {
+                    Statement stmt = conn.createStatement();
+                    Statement stmt2 = conn.createStatement();
+                    Statement stmt3 = conn.createStatement();
+                    ResultSet rs = stmt.executeQuery("SELECT * FROM SALES WHERE SALE_DATE = CURRENT_DATE");
+                    while (rs.next()) {
+                        System.out.print(" ID " + rs.getString("ID"));
+                        System.out.print(" SUB TOTAL " + rs.getString("SUB_TOTAL"));
+                        System.out.print(" DISCOUNT " + rs.getString("DISCOUNT"));
+                        System.out.print(" TAX " + rs.getString("TAX"));
+                        System.out.print(" TOTAL " + rs.getString("TOTAL"));
+                        System.out.print(" DATE " + rs.getString("SALE_DATE"));
+                        System.out.println("");
+
+                        ResultSet rsItems = stmt2.executeQuery("SELECT * FROM ORDER_ITEM WHERE SALES_ID = " + rs.getInt("ID") + "");
+                        while (rsItems.next()) {
+                            ResultSet rsProduct = stmt3.executeQuery("SELECT NAME FROM PRODUCT WHERE ID = " + rsItems.getInt("PRODUCT_ID") + "");
+                            String productName = null;
+                            if (rsProduct.next()) {
+                                productName = rsProduct.getString(1);
+                            }
+                            System.out.print(" " + productName);
+                            System.out.print(" QUANTITY: " + rsItems.getString("QUANTITY"));
+                            System.out.print(" PRICE: " + rsItems.getString("PRICE"));
+                            System.out.println("");
+                        }
+                        System.out.println("");
+                    }
+                }
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(SpaceJamPOS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1466,6 +1546,7 @@ public class SpaceJamPOS extends javax.swing.JFrame {
     private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton36;
     private javax.swing.JButton jButton37;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton41;
     private javax.swing.JButton jButton42;
     private javax.swing.JButton jButton43;
